@@ -12,7 +12,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="drop-shadow-sm sticky top-0">
+    <div className="drop-shadow-sm sticky top-0 z-10">
       <div>
       <nav className="navbar bg-base-100">
         <div className="navbar-start">
