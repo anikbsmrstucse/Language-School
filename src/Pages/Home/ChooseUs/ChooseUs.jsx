@@ -9,7 +9,7 @@ const ChooseUs = () => {
   return (
     <div>
       <SectionTitle title={"Why choose us?"}></SectionTitle>
-      <div className="grid grid-cols-2 gap-5 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-10">
         <div className="card lg:card-side bg-base-100 shadow-xl p-5">
           <figure>
             <img src={img1} alt="Album" />

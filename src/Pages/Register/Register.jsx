@@ -13,7 +13,7 @@ const Register = () => {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div className="card w-1/2 mx-auto shadow-lg bg-base-100">
+      <div className="card w-full md:w-1/2 mx-auto shadow-lg bg-base-100">
         <h3 className="text-center text-2xl font-semibold mt-5">Register</h3>
         <form className="card-body">
           <div className="form-control">
