@@ -7,7 +7,7 @@ import "./fonts.css";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className="max-w-7xl mx-auto">
+  <div className="max-w-7xl mx-auto ">
     <React.StrictMode>
       <HelmetProvider>
         <RouterProvider router={router}></RouterProvider>
