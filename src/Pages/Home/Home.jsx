@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
-    <div>
+    <div className="h-[100vh]">
         <Helmet>
             <title>Home</title>
         </Helmet>
