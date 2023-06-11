@@ -7,14 +7,20 @@ import {
     FaTwitter,
     FaYoutube,
 } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import logo from '../../../assets/Website_logo/logo-black.png';
+import './Navbar.css';
+
 const Navbar = () => {
   const menuBar = (
     <>
-      <li>Home</li>
+      <li><NavLink to='/'>Home</NavLink></li>
+      <li><NavLink to='/teacher'>Teachers</NavLink></li>
+      <li><NavLink to='/courses'>Courses</NavLink></li>
     </>
   );
   return (
-    <div>
+    <div className="drop-shadow-sm">
       <div className="md:h-[40px] h-[70px] w-full md:gap-0 gap-1 bg-[#3b3b3b] flex md:flex-row flex-col items-center px-5 flex-wrap md:pt-0 pt-2">
         <div className="text-[#acaaaa] flex md:gap-3 gap-1 flex-row md:flex-grow md:mt-0 mt-5">
           <FaFacebook />
@@ -63,12 +69,18 @@ const Navbar = () => {
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            ></ul>
+            >
+                {menuBar}
+            </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a >
+            <img src={logo} alt="" />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1"></ul>
+          <ul className="menu menu-horizontal px-1">
+            {menuBar}
+          </ul>
         </div>
         <div className="navbar-end">
           <a className="btn btn-outline normal-case btn-sm">Login</a>
