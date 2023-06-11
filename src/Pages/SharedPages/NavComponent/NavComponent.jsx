@@ -31,7 +31,7 @@ const NavComponent = () => {
       </div>
       <div>
         <select className="select select-bordered-0 rounded-none border-0   select-sm w-[90px] bg-[#3b3b3b] max-w-xs text-[#acaaaa] md:mt-0 mt-4">
-          <option selected className="text-sm">
+          <option defaultValue={'white'} className="text-sm">
             White
           </option>
           <option className="text-sm">Dark</option>

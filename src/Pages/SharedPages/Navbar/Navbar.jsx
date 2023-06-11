@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../../assets/Website_logo/logo-black.png';
 import './Navbar.css';
 
 const Navbar = () => {
-  const user = true;
+  const user = false;
   // TODO: ADD funtionality in user login
   const menuBar = (
     <>
@@ -62,7 +62,7 @@ const Navbar = () => {
             <a className="btn btn-outline normal-case btn-sm ml-5">Logout</a>
             </>
             :
-            <><a className="btn btn-outline normal-case btn-sm">Login</a></>
+            <li className="btn btn-outline normal-case btn-sm"><Link to='/login'>Login</Link></li>
           }
         </div>
       </nav>
