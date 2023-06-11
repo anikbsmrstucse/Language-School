@@ -4,11 +4,16 @@ import logo from '../../../assets/Website_logo/logo-black.png';
 import './Navbar.css';
 
 const Navbar = () => {
+  const user = true;
+  // TODO: ADD funtionality in user login
   const menuBar = (
     <>
       <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/teacher'>Teachers</NavLink></li>
-      <li><NavLink to='/courses'>Courses</NavLink></li>
+      <li><NavLink to='/teacher'>Instructors</NavLink></li>
+      <li><NavLink to='/courses'>Classes</NavLink></li>
+      {
+        user ? <><li><NavLink to='/dashboard'>Dashboard</NavLink></li></>:<li><NavLink to='/dashboard'></NavLink></li>
+      }
     </>
   );
   return (
@@ -50,7 +55,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn btn-outline normal-case btn-sm">Login</a>
+          {/* TODO: need to nav bar profile picture functional and logout and login functional */}
+          {
+            user ? <>
+            <a><img src="https://picsum.photos/200" className="w-10 h-10 rounded-full" alt="" /></a>
+            <a className="btn btn-outline normal-case btn-sm ml-5">Logout</a>
+            </>
+            :
+            <><a className="btn btn-outline normal-case btn-sm">Login</a></>
+          }
         </div>
       </nav>
       </div>
