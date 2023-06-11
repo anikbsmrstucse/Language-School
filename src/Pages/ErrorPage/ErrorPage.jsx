@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import errorPage2 from "/public/new_error.json";
+import errorPage2 from "/src/assets/new_error.json";
 const ErrorPage = () => {
   const navigate = useNavigate();
   const goHome = () => {
