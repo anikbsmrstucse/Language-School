@@ -1,7 +1,8 @@
 import React from "react";
-import logo from '../../../assets/Website_logo/logo-white.png';
+import logo from "../../../assets/Website_logo/logo-white.png";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <div>
       <footer className="footer p-20 bg-[#263344] text-white">
@@ -32,6 +33,11 @@ const Footer = () => {
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
+        </div>
+      </footer>
+      <footer className="footer footer-center p-4 bg-[#263344] text-white">
+        <div>
+          <p>Copyright © {currentYear} - All right reserved by Language School</p>
         </div>
       </footer>
     </div>
