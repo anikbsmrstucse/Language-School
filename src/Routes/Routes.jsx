@@ -4,6 +4,7 @@ import {
 import DashBoard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AllUser from "../Pages/Admin/AllUsers/AllUser";
+import ManageClasses from "../Pages/Admin/ManageClasses/ManageClasses";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -61,6 +62,10 @@ import Register from "../Pages/Register/Register";
         {
           path:'allusers',
           element:<AllUser></AllUser>
+        },
+        {
+          path:'manageclass',
+          element:<ManageClasses></ManageClasses>
         }
       ]
     }

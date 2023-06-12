@@ -47,7 +47,7 @@ const DashBoard = () => {
           {isAdmin === true ? (
             <>
               <li>
-                <NavLink to="/dashboard/booking">
+                <NavLink to="/dashboard/manageclass">
                   <FaBook className="w-[24px] h-[18px]"></FaBook>
                   Manage Class
                 </NavLink>
