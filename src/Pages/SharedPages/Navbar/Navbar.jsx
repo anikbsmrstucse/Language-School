@@ -9,8 +9,8 @@ const Navbar = () => {
   const menuBar = (
     <>
       <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/teacher'>Instructors</NavLink></li>
-      <li><NavLink to='/courses'>Classes</NavLink></li>
+      <li><NavLink to='/instructor'>Instructors</NavLink></li>
+      <li><NavLink to='/classes'>Classes</NavLink></li>
       {
         user ? <><li><NavLink to='/dashboard'>Dashboard</NavLink></li></>:<li><NavLink to='/dashboard'></NavLink></li>
       }
