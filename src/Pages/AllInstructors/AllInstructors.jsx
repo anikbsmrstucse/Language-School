@@ -5,6 +5,7 @@ import SIngleInstructors from "./SIngleInstructors";
 
 const AllInstructors = () => {
     const [instructors,refetch] = useInstructor();
+    refetch();
   return (
     <section className="py-10">
       <h1 className="text-3xl md:text-5xl font-bold">Instructor's</h1>
