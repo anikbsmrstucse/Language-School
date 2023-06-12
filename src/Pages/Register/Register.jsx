@@ -36,11 +36,12 @@ const Register = () => {
         .then((result) => {
           const loggedUser = result.user;
           console.log(loggedUser);
+          const role = teacher || 'student';
           updateUser(name, photourl).then(() => {
             const saveUser = {
               name: name,
               email: email,
-              role: teacher,
+              role: role,
             };
             fetch(`http://localhost:5000/users`, {
               method: "POST",

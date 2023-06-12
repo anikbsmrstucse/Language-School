@@ -1,24 +1,32 @@
 import React from "react";
 import {
-    FaBook,
-    FaEnvelope,
-    FaHamburger,
-    FaHome,
-    FaList,
-    FaMoneyCheck,
-    FaShoppingCart,
-    FaShopware,
-    FaUsers,
-    FaUtensils
+  FaBook,
+  FaEnvelope,
+  FaHamburger,
+  FaHome,
+  FaMoneyCheck,
+  FaShoppingCart,
+  FaUsers
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
 import useCart from "../Hooks/useCart";
-
+import useStudent from "../Hooks/useStudent";
+import useTeacher from "../Hooks/useTeacher";
 
 const DashBoard = () => {
-
-    const [classes,refetch] = useCart();
-  const admin = false;
+  const [classes, refetch] = useCart();
+  refetch();
+  
+  const [admin] = useAdmin();
+  const isAdmin = admin?.admin;
+  
+  const [teacher] = useTeacher();
+  const isTeacher = teacher?.teacher;
+ 
+  const [student] = useStudent();
+  const isStudent = student?.student;
+  
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -36,40 +44,25 @@ const DashBoard = () => {
         <ul className="menu p-4 w-80 h-full bg-slate-300">
           {/* Sidebar content here */}
 
-          {admin ? 
+          {isAdmin === true ? (
             <>
-              <li>
-                <NavLink to="/dashboard/admin">
-                  <FaHome className="w-[24px] h-[18px]"></FaHome>
-                  Admin Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/items">
-                  <FaUtensils className="w-[24px] h-[18px]"></FaUtensils>
-                  Add Items
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageItems">
-                  <FaList className="w-[24px] h-[18px]"></FaList>
-                  Manage Items
-                </NavLink>
-              </li>
               <li>
                 <NavLink to="/dashboard/booking">
                   <FaBook className="w-[24px] h-[18px]"></FaBook>
-                  Manage Booking
+                  Manage Class
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/users">
+                <NavLink to="/dashboard/allusers">
                   <FaUsers className="w-[24px] h-[18px]"></FaUsers>
                   All Users
                 </NavLink>
               </li>
             </>
-           : 
+          ) : (
+            ""
+          )}
+          {isStudent === true ? (
             <>
               <li>
                 <NavLink to="/dashboard/payhistory">
@@ -81,19 +74,44 @@ const DashBoard = () => {
                 <NavLink to="/dashboard/myclass">
                   <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
                   My Class
-                  <span className="badge badge-secondary">+{classes.length}</span>
+                  <span className="badge badge-secondary">
+                    +{classes.length}
+                  </span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/enrolledClass">
+                <NavLink to="/dashboard/myenrolled">
                   <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
                   My Enrolled Class
                   <span className="badge badge-secondary">+</span>
                 </NavLink>
               </li>
             </>
-          }
-         
+          ) : (
+            ""
+          )}
+          
+          {isTeacher === true ? (
+            <>
+              <li>
+                <NavLink to="/dashboard/teacherClass">
+                  <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
+                  My Class
+                  <span className="badge badge-secondary">+</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myenrolled">
+                  <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
+                  Add Class
+                  <span className="badge badge-secondary">+</span>
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            ""
+          )}
+
           <div className="divider"></div>
 
           <li>
@@ -103,21 +121,15 @@ const DashBoard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/menu">
+            <NavLink to="/classes">
               <FaHamburger className="w-[24px] h-[18px]"></FaHamburger>
-              Menu
+              Classes
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">
-              <FaShopware className="w-[24px] h-[18px]"></FaShopware>
-              Shop
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/">
+            <NavLink to="/instructors">
               <FaEnvelope className="w-[24px] h-[18px]"></FaEnvelope>
-              Contact
+              Instructors
             </NavLink>
           </li>
         </ul>

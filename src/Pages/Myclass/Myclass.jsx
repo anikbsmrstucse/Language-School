@@ -6,10 +6,9 @@ import useCart from "../../Hooks/useCart";
 
 const Myclass = () => {
     const [classes,refetch] = useCart();
-    console.log(classes);
-    const handleDelete =(item) =>{
-        console.log(item);
-        const {name} = item;
+    const handleDelete =(sclass) =>{
+        console.log(sclass);
+        const {name} = sclass;
         Swal.fire({
             title: 'Are you sure?',
             text: `You wanna delete this!${name} item`,
@@ -20,7 +19,7 @@ const Myclass = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/carts/${item._id}`,{
+                fetch(`http://localhost:5000/carts/${sclass._id}`,{
                     method:"DELETE"
                 })
                 .then(res => res.json())
@@ -35,8 +34,6 @@ const Myclass = () => {
                           )
                     }
                 })
-    
-    
             }
           })
       }
@@ -59,7 +56,7 @@ const Myclass = () => {
           <tbody>
             {/* row 1 */}
             {
-                classes.map((sclass,index) =>  <tr>
+                classes.map((sclass,index) =>  <tr key={sclass._id}>
                 <th>{index + 1}</th>
                 <td>
                   <div className="mask mask-squircle w-12 h-12">
