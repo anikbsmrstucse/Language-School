@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import logo from '../../../assets/Website_logo/logo-black.png';
 import './Navbar.css';
 
 const Navbar = () => {
-  const user = false;
-  // TODO: ADD funtionality in user login
+  const {user} = useContext(AuthContext);
   const menuBar = (
     <>
       <li><NavLink to='/'>Home</NavLink></li>
@@ -55,10 +55,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {/* TODO: need to nav bar profile picture functional and logout and login functional */}
           {
             user ? <>
-            <a><img src="https://picsum.photos/200" className="w-10 h-10 rounded-full" alt="" /></a>
+            <a><img src={user.photoURL} className="w-10 h-10 rounded-full" alt="" /></a>
             <a className="btn btn-outline normal-case btn-sm ml-5">Logout</a>
             </>
             :
