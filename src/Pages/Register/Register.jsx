@@ -5,36 +5,52 @@ import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-
 const Register = () => {
-    const [type,setType] = useState(true);
-    const showPassword = () => {
-        setType(false);
-    }
+  const [type, setType] = useState(true);
+  const showPassword = () => {
+    setType(false);
+  };
 
-    const {googleSignIn} = useContext(AuthContext);
+  const { googleSignIn, createUser, updateUser } = useContext(AuthContext);
 
-    const handleGoole = () => {
-      googleSignIn()
-      .then(result => {
+  const handleGoogle = () => {
+    googleSignIn()
+      .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
       })
-      .catch(error =>{
+      .catch((error) => {
         console.log(error);
-      })
-    }
+      });
+  };
 
-    const { register, formState: { errors }, handleSubmit, reset} = useForm();
-    const onSubmit = (data) => {
-      console.log(data);
-      const {name,email,password,confirmPassword,photourl,teacher} = data;
-      if(password !== confirmPassword){
-        alert('password is not matched');
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    const { name, email, password, confirmPassword, photourl, teacher } = data;
+    if (email && password) {
+      if (password !== confirmPassword) {
+        alert("password is not matched");
         return;
       }
-      //reset();
+      createUser(email,password)
+        .then((result) => {
+          const loggedUser = result.user;
+          console.log(loggedUser);
+          updateUser(name,photourl);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
+
+    //reset();
+  };
 
   return (
     <div className="py-5">
@@ -52,9 +68,11 @@ const Register = () => {
               type="text"
               placeholder="name"
               className="input input-bordered"
-              {...register("name", { required: true })} 
+              {...register("name", { required: true })}
             />
-            {errors.name?.type === 'required' && <p className="text-error">Name is required</p>}
+            {errors.name?.type === "required" && (
+              <p className="text-error">Name is required</p>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -65,8 +83,10 @@ const Register = () => {
               placeholder="email"
               className="input input-bordered"
               {...register("email", { required: true })}
-              />
-              {errors.email?.type === 'required' && <p className="text-error">Email is required</p>}
+            />
+            {errors.email?.type === "required" && (
+              <p className="text-error">Email is required</p>
+            )}
           </div>
           <div className="form-control relative">
             <label className="label">
@@ -80,10 +100,14 @@ const Register = () => {
               type={type ? "password" : "text"}
               placeholder="password"
               className="input input-bordered"
-              {...register("password", { required: true, minLength:6})}
+              {...register("password", { required: true, minLength: 6 })}
             />
-            {errors.password?.type === 'minLength' && <p className="text-error">password must be six character</p>}
-            {errors.password?.type === 'required' && <p className="text-error">password must be required</p>}
+            {errors.password?.type === "minLength" && (
+              <p className="text-error">password must be six character</p>
+            )}
+            {errors.password?.type === "required" && (
+              <p className="text-error">password must be required</p>
+            )}
           </div>
           <div className="form-control relative">
             <label className="label">
@@ -97,10 +121,14 @@ const Register = () => {
               type={type ? "password" : "text"}
               placeholder="confirm password"
               className="input input-bordered"
-              {...register("confirmPassword", { required: true })} 
+              {...register("confirmPassword", { required: true })}
             />
-            {errors.confirmPassword?.type === 'minLength' && <p className="text-error">password must be six character</p>}
-            {errors.confirmPassword?.type === 'required' && <p className="text-error">password must be required</p>}
+            {errors.confirmPassword?.type === "minLength" && (
+              <p className="text-error">password must be six character</p>
+            )}
+            {errors.confirmPassword?.type === "required" && (
+              <p className="text-error">password must be required</p>
+            )}
           </div>
           <div className="form-control">
             <label className="label">
@@ -111,11 +139,19 @@ const Register = () => {
               placeholder="Photo URL"
               className="input input-bordered"
               {...register("photourl", { required: true })}
-              />
-              {errors.photourl?.type === 'required' && <p className="text-error"> photo url is required</p>}
+            />
+            {errors.photourl?.type === "required" && (
+              <p className="text-error"> photo url is required</p>
+            )}
           </div>
           <div>
-            <input type="checkbox" name="teacher" id="" placeholder="Yes?" {...register("teacher")} />
+            <input
+              type="checkbox"
+              name="teacher"
+              id=""
+              placeholder="Yes?"
+              {...register("teacher")}
+            />
             <label className="ml-3" htmlFor="">
               Are You Teacher?
             </label>
@@ -125,14 +161,19 @@ const Register = () => {
           </div>
           <p>
             Already Have an account?{" "}
-            <Link className="text-primary underline" to='/login'>
+            <Link className="text-primary underline" to="/login">
               Login
             </Link>
           </p>
         </form>
-        <div  className="divider w-11/12 mx-auto">OR</div>
+        <div className="divider w-11/12 mx-auto">OR</div>
         <div className="text-center mb-5">
-          <button onClick={handleGoole} className="btn btn-outline btn-circle text-lg">G</button>
+          <button
+            onClick={handleGoogle}
+            className="btn btn-outline btn-circle text-lg"
+          >
+            G
+          </button>
         </div>
       </div>
     </div>

@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
     const [type,setType] = useState(true);
     const showPassword = () => {
         setType(false);
     }
+
+    const {googleSignIn} = useContext(AuthContext);
+
+    const handleGoogle = () => {
+      googleSignIn()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch(error =>{
+        console.log(error);
+      })
+    }
+
   return (
     <div className="py-5">
       <Helmet>
@@ -55,7 +70,7 @@ const Login = () => {
         </form>
         <div className="divider w-11/12 mx-auto">OR</div>
         <div className="text-center mb-5">
-          <button className="btn btn-outline btn-circle text-lg">G</button>
+          <button onClick={handleGoogle} className="btn btn-outline btn-circle text-lg">G</button>
         </div>
       </div>
     </div>

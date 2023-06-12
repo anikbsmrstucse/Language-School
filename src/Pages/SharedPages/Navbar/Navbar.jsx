@@ -5,7 +5,14 @@ import logo from '../../../assets/Website_logo/logo-black.png';
 import './Navbar.css';
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext);
+  const {user,logOut} = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+    .then(()=>{})
+    .then(error => {
+      console.log(error);
+    })
+  }
   const menuBar = (
     <>
       <li><NavLink to='/'>Home</NavLink></li>
@@ -58,7 +65,7 @@ const Navbar = () => {
           {
             user ? <>
             <a><img src={user.photoURL} className="w-10 h-10 rounded-full" alt="" /></a>
-            <a className="btn btn-outline normal-case btn-sm ml-5">Logout</a>
+            <a onClick={handleLogout} className="btn btn-outline normal-case btn-sm ml-5">Logout</a>
             </>
             :
             <li className="btn btn-outline normal-case btn-sm"><Link to='/login'>Login</Link></li>
