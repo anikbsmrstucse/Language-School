@@ -14,7 +14,7 @@ const PopularCourses = () => {
     
     return (
         <div className='bg-img bg-[#F4F6FC]'>
-            <SectionTitle title={'Popular Classes'}></SectionTitle>
+            <SectionTitle title={'Our Popular Classes'}></SectionTitle>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 py-5 px-5'>
                 {
                     popularSixData.map((course) => <ClassesCard key={course._id} course={course}></ClassesCard>) 

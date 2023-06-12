@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Main from "../Layout/Main";
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -29,6 +30,10 @@ import Register from "../Pages/Register/Register";
         {
             path:'classes',
             element:<AllClasses></AllClasses>,
+        },
+        {
+          path:'instructors',
+          element:<AllInstructors></AllInstructors>
         }
       ]
     },
