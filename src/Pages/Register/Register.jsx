@@ -2,27 +2,20 @@ import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import SocialSignIn from "../SocialSignIn/SocialSignIn";
 
 const Register = () => {
   const [type, setType] = useState(true);
+  const navigate = useNavigate();
   const showPassword = () => {
     setType(false);
   };
 
-  const { googleSignIn, createUser, updateUser } = useContext(AuthContext);
-
-  const handleGoogle = () => {
-    googleSignIn()
-      .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const {createUser, updateUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -33,23 +26,54 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
     const { name, email, password, confirmPassword, photourl, teacher } = data;
+    setError("");
     if (email && password) {
       if (password !== confirmPassword) {
-        alert("password is not matched");
+        setError("password is not matched");
         return;
       }
-      createUser(email,password)
+      createUser(email, password)
         .then((result) => {
           const loggedUser = result.user;
           console.log(loggedUser);
-          updateUser(name,photourl);
+          updateUser(name, photourl).then(() => {
+            const saveUser = {
+              name: name,
+              email: email,
+              role: teacher,
+            };
+            fetch(`http://localhost:5000/users`, {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(saveUser),
+            })
+            .then(res => res.json())
+            .then(data => {
+              console.log(data);
+              if(data.insertedId){
+                Swal.fire({
+                  title: 'Register Successfully',
+                  icon:'success',
+                  showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                  },
+                  hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                  }
+              })
+              navigate('/');
+              reset();
+              }
+            })
+
+          });
         })
         .catch((error) => {
           console.log(error);
         });
     }
-
-    //reset();
   };
 
   return (
@@ -159,6 +183,9 @@ const Register = () => {
           <div className="form-control mt-6">
             <input className="btn btn-primary" type="submit" value="Register" />
           </div>
+          <small>
+            <p className="text-error">{error}</p>
+          </small>
           <p>
             Already Have an account?{" "}
             <Link className="text-primary underline" to="/login">
@@ -166,15 +193,7 @@ const Register = () => {
             </Link>
           </p>
         </form>
-        <div className="divider w-11/12 mx-auto">OR</div>
-        <div className="text-center mb-5">
-          <button
-            onClick={handleGoogle}
-            className="btn btn-outline btn-circle text-lg"
-          >
-            G
-          </button>
-        </div>
+        <SocialSignIn></SocialSignIn>
       </div>
     </div>
   );

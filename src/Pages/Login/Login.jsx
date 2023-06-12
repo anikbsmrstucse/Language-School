@@ -1,26 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import SocialSignIn from "../SocialSignIn/SocialSignIn";
 
 const Login = () => {
     const [type,setType] = useState(true);
     const showPassword = () => {
         setType(false);
-    }
-
-    const {googleSignIn} = useContext(AuthContext);
-
-    const handleGoogle = () => {
-      googleSignIn()
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      })
-      .catch(error =>{
-        console.log(error);
-      })
     }
 
   return (
@@ -68,10 +55,7 @@ const Login = () => {
             </Link>
           </p>
         </form>
-        <div className="divider w-11/12 mx-auto">OR</div>
-        <div className="text-center mb-5">
-          <button onClick={handleGoogle} className="btn btn-outline btn-circle text-lg">G</button>
-        </div>
+      <SocialSignIn></SocialSignIn>
       </div>
     </div>
   );
