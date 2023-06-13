@@ -23,9 +23,10 @@ const DashBoard = () => {
   
   const [teacher] = useTeacher();
   const isTeacher = teacher?.teacher;
- 
+  
   const [student] = useStudent();
   const isStudent = student?.student;
+  
   
   return (
     <div className="drawer lg:drawer-open sticky top-0">
@@ -101,7 +102,7 @@ const DashBoard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/myenrolled">
+                <NavLink to="/dashboard/addclass">
                   <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
                   Add Class
                   <span className="badge badge-secondary">+</span>

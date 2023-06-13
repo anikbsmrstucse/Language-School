@@ -17,7 +17,7 @@ const SocialSignIn = () => {
         const saveInfo = {
           name: loggedUser.displayName,
           emaii: loggedUser.email,
-          role: false,
+          role: "student",
         };
         fetch("http://localhost:5000/users", {
           method: "POST",

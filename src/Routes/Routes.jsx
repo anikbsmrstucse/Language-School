@@ -14,6 +14,8 @@ import Myclass from "../Pages/Myclass/Myclass";
 import Myenrolled from "../Pages/Myenrolled/Myenrolled";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import Register from "../Pages/Register/Register";
+import AddClass from "../Pages/Teacher/AddClass/AddClass";
+import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
 
   const router = createBrowserRouter([
     {
@@ -59,6 +61,7 @@ import Register from "../Pages/Register/Register";
           path:'payhistory',
           element:<PaymentHistory></PaymentHistory>
         },
+        // admin
         {
           path:'allusers',
           element:<AllUser></AllUser>
@@ -67,7 +70,15 @@ import Register from "../Pages/Register/Register";
           path:'manageclass',
           element:<ManageClasses></ManageClasses>
         },
-        
+        // teacher routes
+        {
+          path:'addclass',
+          element:<AddClass></AddClass>,
+        },
+        {
+          path:'teacherclass',
+          element:<TeacherClass></TeacherClass>
+        }
       ]
     }
   ]);

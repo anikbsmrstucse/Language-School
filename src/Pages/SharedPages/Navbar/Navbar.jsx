@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import useAdmin from "../../../Hooks/useAdmin";
+import useStudent from "../../../Hooks/useStudent";
+import useTeacher from "../../../Hooks/useTeacher";
 import logo from '../../../assets/Website_logo/logo-black.png';
 import './Navbar.css';
 
@@ -13,14 +16,29 @@ const Navbar = () => {
       console.log(error);
     })
   }
-  const isAdmin = 'admin';
+
+  const [admin] = useAdmin();
+  const isAdmin = admin?.admin;
+  
+  const [teacher] = useTeacher();
+  const isTeacher = teacher?.teacher;
+  
+  const [student] = useStudent();
+  const isStudent = student?.student;
+
   const menuBar = (
     <>
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/instructors'>Instructors</NavLink></li>
       <li><NavLink to='/classes'>Classes</NavLink></li>
       {
-        user ? <li><NavLink to='/dashboard/myclass'>Dashboard</NavLink></li>:''
+        user && isStudent ? <li><NavLink to='/dashboard/myclass'>Dashboard</NavLink></li>:''
+      }
+      {
+        user && isTeacher ? <li><NavLink to='/dashboard/teacherclass'>Dashboard</NavLink></li>:''
+      }
+      {
+        user && isAdmin ? <li><NavLink to='/dashboard/allusers'>Dashboard</NavLink></li>:''
       }
     </>
   );
