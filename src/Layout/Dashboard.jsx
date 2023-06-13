@@ -28,7 +28,7 @@ const DashBoard = () => {
   const isStudent = student?.student;
   
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open sticky top-0">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content w-full px-10 py-20">
         <Outlet></Outlet>

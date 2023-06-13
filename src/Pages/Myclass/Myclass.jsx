@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useCart from "../../Hooks/useCart";
@@ -39,6 +40,7 @@ const Myclass = () => {
       }
   return (
     <div>
+        <Helmet><title>My Class</title></Helmet>
       <h1 className="text-xl md:text-3xl font-bold pb-10">My Class</h1>
       <div className="overflow-x-auto">
         <table className="table md:w-full px-0 mx-0">

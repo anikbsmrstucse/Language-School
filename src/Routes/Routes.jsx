@@ -66,7 +66,8 @@ import Register from "../Pages/Register/Register";
         {
           path:'manageclass',
           element:<ManageClasses></ManageClasses>
-        }
+        },
+        
       ]
     }
   ]);

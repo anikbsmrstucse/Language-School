@@ -1,11 +1,12 @@
-import React from "react";
-import { FaTrash } from "react-icons/fa";
+import React, { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import useUser from "../../../Hooks/useUser";
 
 const AllUser = () => {
+    const {user} = useContext(AuthContext)
   const [users, refetch] = useUser();
-  console.log(users);
   const updateRole = (suser) => {
     console.log(suser);
     fetch(`http://localhost:5000/users/admin/${suser._id}`, {
@@ -19,21 +20,31 @@ const AllUser = () => {
         }
       });
   };
-  const makeInstructor = (suser) =>{
+  const makeInstructor = (suser) => {
     fetch(`http://localhost:5000/users/teacher/${suser._id}`, {
-        method: "PATCH",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.modifiedCount > 0) {
-            refetch();
-            Swal.fire("Updated!", "Your user is now instructor.", "success");
-          }
-        });
-  }
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire("Updated!", "Your user is now instructor.", "success");
+        }
+      });
+  };
   return (
     <div>
-      <h1 className="text-xl md:text-3xl font-bold pb-10">All Users</h1>
+      <Helmet>
+        <title>All User</title>
+      </Helmet>
+      <div className="flex">
+        <h1 className="text-xl md:text-3xl font-bold pb-10 flex-grow">
+          All Classes
+        </h1>
+        <h1 className="text-xl md:text-3xl font-bold pb-10">
+          Welcome {user.displayName}
+        </h1>
+      </div>
       <div className="overflow-x-auto">
         <table className="table md:w-full px-0 mx-0">
           {/* head */}
@@ -44,7 +55,6 @@ const AllUser = () => {
               <th>Class Name</th>
               <th>Make Admin</th>
               <th>Make Instructor</th>
-              <th>Delete Class</th>
             </tr>
           </thead>
           <tbody>
@@ -81,14 +91,6 @@ const AllUser = () => {
                       </button>
                     </>
                   )}
-                </td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(suser)}
-                    className="btn btn-outline btn-error btn-sm"
-                  >
-                    <FaTrash></FaTrash>
-                  </button>
                 </td>
               </tr>
             ))}
