@@ -17,14 +17,18 @@ const Navbar = () => {
     })
   }
 
-  const [admin] = useAdmin();
-  const isAdmin = admin?.admin;
+  // const [admin] = useAdmin();
+  // const isAdmin = admin?.admin;
   
-  const [teacher] = useTeacher();
-  const isTeacher = teacher?.teacher;
+  // const [teacher] = useTeacher();
+  // const isTeacher = teacher?.teacher;
   
-  const [student] = useStudent();
-  const isStudent = student?.student;
+  // const [student] = useStudent();
+  // const isStudent = student?.student;
+
+  const [isAdmin] = useAdmin();
+  const [isStudent] = useStudent();
+  const [isTeacher] = useTeacher();
 
   const menuBar = (
     <>

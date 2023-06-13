@@ -16,6 +16,8 @@ import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import Register from "../Pages/Register/Register";
 import AddClass from "../Pages/Teacher/AddClass/AddClass";
 import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
+import AdminRoute from "./AdminRoute";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -47,7 +49,7 @@ import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
     },
     {
       path:'/dashboard',
-      element:<DashBoard></DashBoard>,
+      element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       children:[
         {
           path:'myclass',
@@ -64,11 +66,11 @@ import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
         // admin
         {
           path:'allusers',
-          element:<AllUser></AllUser>
+          element:<AdminRoute><AllUser></AllUser></AdminRoute>
         },
         {
           path:'manageclass',
-          element:<ManageClasses></ManageClasses>
+          element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
         },
         // teacher routes
         {

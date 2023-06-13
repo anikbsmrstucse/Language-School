@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -38,6 +38,9 @@ const Myclass = () => {
             }
           })
       }
+      useEffect(()=>{
+        refetch();
+      },[]);
   return (
     <div>
         <Helmet><title>My Class</title></Helmet>
@@ -57,7 +60,7 @@ const Myclass = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {
+            {   
                 classes.map((sclass,index) =>  <tr key={sclass._id}>
                 <th>{index + 1}</th>
                 <td>

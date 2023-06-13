@@ -1,11 +1,12 @@
 import React from "react";
 import {
   FaBook,
-  FaEnvelope,
-  FaHamburger,
+  FaBookMedical,
   FaHome,
+  FaListAlt,
   FaMoneyCheck,
   FaShoppingCart,
+  FaUser,
   FaUsers
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
@@ -18,20 +19,24 @@ const DashBoard = () => {
   const [classes, refetch] = useCart();
   refetch();
   
-  const [admin] = useAdmin();
-  const isAdmin = admin?.admin;
+  // const [admin] = useAdmin();
+  // const isAdmin = admin?.admin;
   
-  const [teacher] = useTeacher();
-  const isTeacher = teacher?.teacher;
+  // const [teacher] = useTeacher();
+  // const isTeacher = teacher?.teacher;
   
-  const [student] = useStudent();
-  const isStudent = student?.student;
+  // const [student] = useStudent();
+  // const isStudent = student?.student;
+
+  const [isAdmin] = useAdmin();
+  const [isStudent] = useStudent();
+  const [isTeacher] = useTeacher();
   
   
   return (
     <div className="drawer lg:drawer-open sticky top-0">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content w-full px-10 py-20">
+      <div className="drawer-content w-full px-10 py-10">
         <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
@@ -45,7 +50,7 @@ const DashBoard = () => {
         <ul className="menu p-4 w-80 h-full bg-slate-300">
           {/* Sidebar content here */}
 
-          {isAdmin === true ? (
+          {isAdmin ? (
             <>
               <li>
                 <NavLink to="/dashboard/manageclass">
@@ -63,7 +68,7 @@ const DashBoard = () => {
           ) : (
             ""
           )}
-          {isStudent === true ? (
+          {isStudent ? (
             <>
               <li>
                 <NavLink to="/dashboard/payhistory">
@@ -92,18 +97,18 @@ const DashBoard = () => {
             ""
           )}
           
-          {isTeacher === true ? (
+          {isTeacher ? (
             <>
               <li>
                 <NavLink to="/dashboard/teacherClass">
-                  <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
+                  <FaListAlt className="w-[24px] h-[18px]"></FaListAlt>
                   My Class
                   <span className="badge badge-secondary">+</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/addclass">
-                  <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
+                  <FaBookMedical className="w-[24px] h-[18px]"></FaBookMedical>
                   Add Class
                   <span className="badge badge-secondary">+</span>
                 </NavLink>
@@ -123,13 +128,13 @@ const DashBoard = () => {
           </li>
           <li>
             <NavLink to="/classes">
-              <FaHamburger className="w-[24px] h-[18px]"></FaHamburger>
+              <FaListAlt className="w-[24px] h-[18px]"></FaListAlt>
               Classes
             </NavLink>
           </li>
           <li>
             <NavLink to="/instructors">
-              <FaEnvelope className="w-[24px] h-[18px]"></FaEnvelope>
+              <FaUser className="w-[24px] h-[18px]"></FaUser>
               Instructors
             </NavLink>
           </li>

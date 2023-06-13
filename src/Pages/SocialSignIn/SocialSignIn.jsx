@@ -16,7 +16,7 @@ const SocialSignIn = () => {
         console.log(loggedUser);
         const saveInfo = {
           name: loggedUser.displayName,
-          emaii: loggedUser.email,
+          email: loggedUser.email,
           role: "student",
         };
         fetch("http://localhost:5000/users", {
