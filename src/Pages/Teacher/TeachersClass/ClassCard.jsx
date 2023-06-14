@@ -1,6 +1,7 @@
 import { FaCheck, FaClock, FaPen, FaTimesCircle, FaUserTie } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const ClassCard = ({ sclass }) => {
+const ClassCard = ({ sclass , updateClass }) => {
   const {
     image,
     name,
@@ -67,7 +68,7 @@ const ClassCard = ({ sclass }) => {
             </span>
           </div>
           <div className="text-center mt-2">
-            <button className="btn btn-outline btn-wide"> <FaPen></FaPen> Update</button>
+            <Link to={`/dashboard/updateclass/${_id}`}><button className="btn btn-outline btn-wide"> <FaPen></FaPen> Update</button></Link>
           </div>
         </div>
       </div>

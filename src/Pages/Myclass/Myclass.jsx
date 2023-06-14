@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../Hooks/useCart";
 
@@ -75,8 +76,9 @@ const Myclass = () => {
                   {sclass.name}
                 </td>
                 <td>{sclass.price}</td>
+                <td>{sclass.courseId}</td>
                 <th>
-                  <button className="btn btn-outline btn-error btn-sm">Pay</button>
+                  <Link state={{price:sclass.price,name:sclass.name,courseId:sclass.courseId,image:sclass.image,id:sclass._id}} to='/dashboard/payment'><button className="btn btn-outline btn-error btn-sm">Pay</button></Link>
                 </th>
                 <td>
                   <button onClick={()=>handleDelete(sclass)} className="btn btn-outline btn-error btn-sm"><FaTrash></FaTrash></button>

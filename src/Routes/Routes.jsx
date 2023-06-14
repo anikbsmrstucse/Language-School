@@ -11,13 +11,14 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Myclass from "../Pages/Myclass/Myclass";
+import Payment from "../Pages/Myclass/Payment/Payment";
 import Myenrolled from "../Pages/Myenrolled/Myenrolled";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import Register from "../Pages/Register/Register";
 import AddClass from "../Pages/Teacher/AddClass/AddClass";
 import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
+import UpdatePage from "../Pages/Teacher/UpdatePage/UpdatePage";
 import AdminRoute from "./AdminRoute";
-import PrivateRoute from "./PrivateRoute";
 import TeacherRoute from "./TeacherRoute";
 
   const router = createBrowserRouter([
@@ -50,7 +51,7 @@ import TeacherRoute from "./TeacherRoute";
     },
     {
       path:'/dashboard',
-      element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+      element:<><DashBoard></DashBoard></>,
       children:[
         {
           path:'myclass',
@@ -63,6 +64,10 @@ import TeacherRoute from "./TeacherRoute";
         {
           path:'payhistory',
           element:<PaymentHistory></PaymentHistory>
+        },
+        {
+          path:'payment',
+          element:<Payment></Payment>,
         },
         // admin
         {
@@ -81,6 +86,11 @@ import TeacherRoute from "./TeacherRoute";
         {
           path:'teacherclass',
           element:<TeacherRoute><TeacherClass></TeacherClass></TeacherRoute>
+        },
+        {
+          path:'updateclass',
+          element:<UpdatePage></UpdatePage>,
+          
         }
       ]
     }

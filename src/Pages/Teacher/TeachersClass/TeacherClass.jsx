@@ -5,6 +5,9 @@ import ClassCard from "./ClassCard";
 
 const TeacherClass = () => {
   const [teacherClass] = useTeacherClass();
+  const updateClass = (course)=>{
+    console.log(course);
+  }
   console.log(teacherClass);
   return (
     <div>
@@ -20,8 +23,9 @@ const TeacherClass = () => {
       <span className="divider"></span>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {
-            teacherClass?.map(sclass => <ClassCard key={sclass?._id} sclass={sclass}></ClassCard>)
+            teacherClass?.map(sclass => <ClassCard updateClass={updateClass} key={sclass?._id} sclass={sclass}></ClassCard>)
         }
+    
       </div>
     </div>
   );
