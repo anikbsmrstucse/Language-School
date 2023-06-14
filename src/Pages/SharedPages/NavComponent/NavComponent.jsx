@@ -1,12 +1,13 @@
 import React from "react";
 import {
-    FaEnvelope,
-    FaFacebook,
-    FaLinkedin,
-    FaPhone,
-    FaTwitter,
-    FaYoutube,
+  FaEnvelope,
+  FaFacebook,
+  FaLinkedin,
+  FaPhone,
+  FaTwitter,
+  FaYoutube,
 } from "react-icons/fa";
+import DarkModeToggle from "../../../ToggleDark";
 
 const NavComponent = () => {
   return (
@@ -30,12 +31,7 @@ const NavComponent = () => {
         </div>
       </div>
       <div>
-        <select className="select select-bordered-0 rounded-none border-0   select-sm w-[90px] bg-[#3b3b3b] max-w-xs text-[#acaaaa] md:mt-0 mt-4">
-          <option defaultValue={'white'} className="text-sm">
-            White
-          </option>
-          <option className="text-sm">Dark</option>
-        </select>
+       <DarkModeToggle></DarkModeToggle>
       </div>
     </div>
   );

@@ -98,14 +98,12 @@ const DashBoard = () => {
                 <NavLink to="/dashboard/teacherClass">
                   <FaListAlt className="w-[24px] h-[18px]"></FaListAlt>
                   My Class
-                  <span className="badge badge-secondary">+</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/addclass">
                   <FaBookMedical className="w-[24px] h-[18px]"></FaBookMedical>
                   Add Class
-                  <span className="badge badge-secondary">+</span>
                 </NavLink>
               </li>
             </>

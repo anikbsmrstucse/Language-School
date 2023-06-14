@@ -19,6 +19,7 @@ import AddClass from "../Pages/Teacher/AddClass/AddClass";
 import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
 import UpdatePage from "../Pages/Teacher/UpdatePage/UpdatePage";
 import AdminRoute from "./AdminRoute";
+import StudentRoute from "./StudentRoute";
 import TeacherRoute from "./TeacherRoute";
 
   const router = createBrowserRouter([
@@ -55,19 +56,19 @@ import TeacherRoute from "./TeacherRoute";
       children:[
         {
           path:'myclass',
-          element:<Myclass></Myclass>
+          element:<StudentRoute><Myclass></Myclass></StudentRoute>
         },
         {
           path:'myenrolled',
-          element:<Myenrolled></Myenrolled>
+          element:<StudentRoute><Myenrolled></Myenrolled></StudentRoute>
         },
         {
           path:'payhistory',
-          element:<PaymentHistory></PaymentHistory>
+          element:<StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
         },
         {
           path:'payment',
-          element:<Payment></Payment>,
+          element:<StudentRoute><Payment></Payment></StudentRoute>,
         },
         // admin
         {
