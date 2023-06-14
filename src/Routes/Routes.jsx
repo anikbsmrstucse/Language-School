@@ -18,6 +18,7 @@ import AddClass from "../Pages/Teacher/AddClass/AddClass";
 import TeacherClass from "../Pages/Teacher/TeachersClass/TeacherClass";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import TeacherRoute from "./TeacherRoute";
 
   const router = createBrowserRouter([
     {
@@ -75,11 +76,11 @@ import PrivateRoute from "./PrivateRoute";
         // teacher routes
         {
           path:'addclass',
-          element:<AddClass></AddClass>,
+          element:<TeacherRoute><AddClass></AddClass></TeacherRoute>,
         },
         {
           path:'teacherclass',
-          element:<TeacherClass></TeacherClass>
+          element:<TeacherRoute><TeacherClass></TeacherClass></TeacherRoute>
         }
       ]
     }
