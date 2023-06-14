@@ -20,7 +20,7 @@ const SingleCard = ({course,refetch}) => {
         email:user.email
       }
       console.log(selectedCourse);
-      fetch(`http://localhost:5000/carts`,{
+      fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/carts`,{
         method:"POST",
         headers:{
           "content-type":"application/json"

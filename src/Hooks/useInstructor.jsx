@@ -4,7 +4,7 @@ const useInstructor = () => {
     const {refetch,data: instructors=[]} = useQuery({
         queryKey:['instructors'],
         queryFn:async()=>{
-            const res = await fetch('http://localhost:5000/instructors');
+            const res = await fetch('https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/instructors');
             return res.json();
         }
     })

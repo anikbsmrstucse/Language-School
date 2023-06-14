@@ -2,14 +2,16 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useUser from "../../../Hooks/useUser";
 
 const AllUser = () => {
     const {user} = useContext(AuthContext)
+    const [axiosSecure] = useAxiosSecure();
   const [users, refetch] = useUser();
   const updateRole = (suser) => {
     console.log(suser);
-    fetch(`http://localhost:5000/users/admin/${suser._id}`, {
+    fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/users/admin/${suser._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -21,12 +23,9 @@ const AllUser = () => {
       });
   };
   const makeInstructor = (suser) => {
-    fetch(`http://localhost:5000/users/teacher/${suser._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`/users/teacher/${suser._id}`)
       .then((data) => {
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire("Updated!", "Your user is now instructor.", "success");
         }

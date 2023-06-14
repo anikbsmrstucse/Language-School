@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaCheck, FaClock, FaTimesCircle, FaUserTie } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const SingleClass = ({ course, refetch }) => {
   const {
@@ -17,29 +18,25 @@ const SingleClass = ({ course, refetch }) => {
   } = course;
 
   const [feedback, setFeedback] = useState({});
+  const [axiosSecure] = useAxiosSecure();
 
   const handleApprove = (course) => {
     console.log(course);
-    fetch(`https://language-school-assignment-12-server.vercel.app/classes/${course._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
+    axiosSecure.patch(`/classes/${_id}`)
       .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
+        console.log(data.data);
+        if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire("Updated!", "Your user role is updated.", "success");
         }
       });
   };
   const handleDeny = (course) => {
-    console.log(course);
-    fetch(`https://language-school-assignment-12-server.vercel.app/classes/deny/${course._id}`, {
+    fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/classes/deny/${course._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.modifiedCount > 0) {
           refetch();
           Swal.fire("Updated!", "Your user role is updated.", "success");
@@ -54,7 +51,7 @@ const SingleClass = ({ course, refetch }) => {
       }
       setFeedback(feedback);
     }
-    fetch(`http://localhost:5000/classes/feedback/${course._id}`, {
+    fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/feedback/${course._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
