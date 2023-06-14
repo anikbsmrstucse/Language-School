@@ -41,7 +41,8 @@ const AddClass = () => {
                 available_seats:parseInt(available_seats),
                 status,
                 total_seats:parseInt(available_seats),
-                enrollment:parseInt(0)}
+                enrollment:parseInt(0),
+                }
             axiosSecure.post('/classes',newClass)
             .then(data => {
                if(data.data.insertedId){

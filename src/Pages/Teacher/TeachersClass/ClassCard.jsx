@@ -68,7 +68,7 @@ const ClassCard = ({ sclass , updateClass }) => {
             </span>
           </div>
           <div className="text-center mt-2">
-            <Link to={`/dashboard/updateclass/${_id}`}><button className="btn btn-outline btn-wide"> <FaPen></FaPen> Update</button></Link>
+            <Link state={{course:sclass}} to={`/dashboard/updateclass/`}><button className="btn btn-outline btn-wide"> <FaPen></FaPen> Update</button></Link>
           </div>
         </div>
       </div>
