@@ -8,7 +8,7 @@ import logo from '../../../assets/Website_logo/logo-black.png';
 import './Navbar.css';
 
 const Navbar = () => {
-  const {user,logOut} = useContext(AuthContext);
+  const {user,logOut,loading} = useContext(AuthContext);
   const handleLogout = () => {
     logOut()
     .then(()=>{})
@@ -29,6 +29,10 @@ const Navbar = () => {
   const [isAdmin] = useAdmin();
   const [isStudent] = useStudent();
   const [isTeacher] = useTeacher();
+
+  if(loading){
+    <p>Loading...</p>
+  }
 
   const menuBar = (
     <>

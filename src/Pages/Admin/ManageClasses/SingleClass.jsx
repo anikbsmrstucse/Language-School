@@ -20,7 +20,7 @@ const SingleClass = ({ course, refetch }) => {
 
   const handleApprove = (course) => {
     console.log(course);
-    fetch(`http://localhost:5000/classes/${course._id}`, {
+    fetch(`https://language-school-assignment-12-server.vercel.app/classes/${course._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -34,7 +34,7 @@ const SingleClass = ({ course, refetch }) => {
   };
   const handleDeny = (course) => {
     console.log(course);
-    fetch(`http://localhost:5000/classes/deny/${course._id}`, {
+    fetch(`https://language-school-assignment-12-server.vercel.app/classes/deny/${course._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

@@ -14,6 +14,7 @@ import useCart from "../Hooks/useCart";
 import useEnrolled from "../Hooks/useEnrolled";
 import useStudent from "../Hooks/useStudent";
 import useTeacher from "../Hooks/useTeacher";
+import logo from '../assets/Website_logo/logo-black.png';
 
 const DashBoard = () => {
   const [classes, refetch] = useCart();
@@ -42,6 +43,7 @@ const DashBoard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-slate-300">
           {/* Sidebar content here */}
+          <img className="mb-2" src={logo} alt="" />
 
           {isAdmin ? (
             <>
