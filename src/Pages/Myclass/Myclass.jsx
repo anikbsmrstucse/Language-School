@@ -76,7 +76,6 @@ const Myclass = () => {
                   {sclass.name}
                 </td>
                 <td>{sclass.price}</td>
-                <td>{sclass.courseId}</td>
                 <th>
                   <Link state={{price:sclass.price,name:sclass.name,courseId:sclass.courseId,image:sclass.image,id:sclass._id}} to='/dashboard/payment'><button className="btn btn-outline btn-error btn-sm">Pay</button></Link>
                 </th>

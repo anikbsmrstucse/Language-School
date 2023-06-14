@@ -5,28 +5,21 @@ import {
   FaHome,
   FaListAlt,
   FaMoneyCheck,
-  FaShoppingCart,
   FaUser,
   FaUsers
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import useCart from "../Hooks/useCart";
+import useEnrolled from "../Hooks/useEnrolled";
 import useStudent from "../Hooks/useStudent";
 import useTeacher from "../Hooks/useTeacher";
 
 const DashBoard = () => {
   const [classes, refetch] = useCart();
+  const [enroll] = useEnrolled();
   refetch();
-  
-  // const [admin] = useAdmin();
-  // const isAdmin = admin?.admin;
-  
-  // const [teacher] = useTeacher();
-  // const isTeacher = teacher?.teacher;
-  
-  // const [student] = useStudent();
-  // const isStudent = student?.student;
+
 
   const [isAdmin] = useAdmin();
   const [isStudent] = useStudent();
@@ -78,18 +71,18 @@ const DashBoard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/myclass">
-                  <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
-                  My Class
+                  <FaListAlt className="w-[24px] h-[18px]"></FaListAlt>
+                  My Selected Class
                   <span className="badge badge-secondary">
-                    +{classes.length}
+                    +{classes?.length}
                   </span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/myenrolled">
-                  <FaShoppingCart className="w-[24px] h-[18px]"></FaShoppingCart>
-                  My Enrolled Class
-                  <span className="badge badge-secondary">+</span>
+                  <FaBook className="w-[24px] h-[18px]"></FaBook>
+                  My Enroll Class
+                  <span className="badge badge-secondary">+{enroll.length}</span>
                 </NavLink>
               </li>
             </>

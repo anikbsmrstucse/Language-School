@@ -66,7 +66,8 @@ const CheckOut = ({ price, course }) => {
     if (confirmError) {
       setCardError(confirmError);
     }
-
+    const currentData = new Date();
+    console.log(currentData);
     console.log(paymentIntent);
     if (paymentIntent.status === "succeeded") {
       setProcessing(false);
@@ -79,8 +80,7 @@ const CheckOut = ({ price, course }) => {
         price: price,
         image: image,
         id: courseId,
-        status:"done"
-      };
+      }
       
       axiosSecure.post("/payment", saveclass).then((res) => {
         console.log(res.data);
