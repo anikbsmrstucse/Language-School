@@ -8,6 +8,7 @@ import HomeTItle from "./HomeTitle/HomeTItle";
 import INterest from "./Interest/INterest";
 import PopularCourses from "./PopularCourses/PopularCourses";
 import PopularInstructors from "./PopularInstructors/PopularInstructors";
+import WebInfo from "./WebInfo/WebInfo";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <HomeTItle></HomeTItle>
       <PopularCourses></PopularCourses>
       <Feedback></Feedback>
+      <WebInfo></WebInfo>
       <PopularInstructors></PopularInstructors>
       <INterest></INterest>
     </div>
