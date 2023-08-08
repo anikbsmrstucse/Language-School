@@ -15,7 +15,7 @@ const useStudent = () =>{
         // }
         queryFn:async()=>{
             const res = await axiosSecure.get(`/users/student/${user?.email}`);
-            console.log('student',res);
+            
             return res.data.student;
         }
     })

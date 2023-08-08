@@ -24,7 +24,7 @@ const Register = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    
     const { name, email, password, confirmPassword, photourl, teacher } = data;
     setError("");
     if (email && password) {
@@ -35,7 +35,7 @@ const Register = () => {
       createUser(email, password)
         .then((result) => {
           const loggedUser = result.user;
-          console.log(loggedUser);
+          
           const role = teacher || 'student';
           updateUser(name, photourl).then(() => {
             const saveUser = {
@@ -52,7 +52,7 @@ const Register = () => {
             })
             .then(res => res.json())
             .then(data => {
-              console.log(data);
+              
               if(data.insertedId){
                 Swal.fire({
                   title: 'Register Successfully',

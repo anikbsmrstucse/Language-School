@@ -5,7 +5,7 @@ import ClassCard from "./ClassCard";
 
 const TeacherClass = () => {
   const [teacherClass] = useTeacherClass();
-  console.log(teacherClass);
+  
   return (
     <div>
       <Helmet>

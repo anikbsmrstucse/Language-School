@@ -4,7 +4,7 @@ import SingleClass from "./SingleClass";
 
 const ManageClasses = () => {
   const [courses, refetch] = useClasses();
-  console.log(courses);
+  
   return (
     <div>
       <div className="flex">

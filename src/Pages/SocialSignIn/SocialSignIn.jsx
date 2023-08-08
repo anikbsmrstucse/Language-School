@@ -13,7 +13,7 @@ const SocialSignIn = () => {
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+       
         const saveInfo = {
           name: loggedUser.displayName,
           email: loggedUser.email,
@@ -28,7 +28,7 @@ const SocialSignIn = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            
             if (data.insertedId) {
               Swal.fire({
                 title: "Register Successfully",

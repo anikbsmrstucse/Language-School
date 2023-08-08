@@ -9,7 +9,7 @@ import useCart from "../../Hooks/useCart";
 const Myclass = () => {
     const [classes,refetch] = useCart();
     const handleDelete =(sclass) =>{
-        console.log(sclass);
+        
         const {name} = sclass;
         Swal.fire({
             title: 'Are you sure?',
@@ -26,7 +26,7 @@ const Myclass = () => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    
                     if(data.deletedCount > 0){
                         refetch();
                         Swal.fire(

@@ -21,10 +21,10 @@ const SingleClass = ({ course, refetch }) => {
   const [axiosSecure] = useAxiosSecure();
 
   const handleApprove = (course) => {
-    console.log(course);
+    
     axiosSecure.patch(`/classes/${_id}`)
       .then((data) => {
-        console.log(data.data);
+        
         if (data.data.modifiedCount > 0) {
           refetch();
           Swal.fire("Updated!", "Your user role is updated.", "success");

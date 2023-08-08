@@ -19,7 +19,7 @@ const SingleCard = ({course,refetch}) => {
         price,
         email:user.email
       }
-      console.log(selectedCourse);
+      
       fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/carts`,{
         method:"POST",
         headers:{
@@ -29,7 +29,7 @@ const SingleCard = ({course,refetch}) => {
       })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        
         if(data.insertedId){
           refetch();
             Swal.fire({

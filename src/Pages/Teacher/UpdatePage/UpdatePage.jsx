@@ -44,7 +44,7 @@ const UpdatePage = ({}) => {
         })
         .then(res => res.json())
         .then(images => {
-           console.log(images);
+           
            if(images.success){
                const image = images.data.display_url;
                const {name,instructor,email,price,available_seats,status} = data;
@@ -59,7 +59,6 @@ const UpdatePage = ({}) => {
                    }
                axiosSecure.put(`/classes/update/${_id}`,newClass)
                .then(data => {
-                console.log(data);
                   if(data.data.modifiedCount > 0){
                    Swal.fire("Success", "Your class is updated successfully.", "success");
                    reset();

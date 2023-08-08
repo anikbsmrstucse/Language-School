@@ -21,7 +21,7 @@ const CheckOut = ({ price, course }) => {
   
   useEffect(() => {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      console.log(res.data.clientSecret);
+      
       setClientSecret(res.data.clientSecret);
     });
   }, [price, axiosSecure]);
@@ -45,11 +45,11 @@ const CheckOut = ({ price, course }) => {
     });
 
     if (error) {
-      console.log("card errror", error);
+      
       setCardError(error.message);
     } else {
       setCardError(" ");
-      console.log("card pay method", paymentMethod);
+      
     }
     setProcessing(true);
     const { paymentIntent, error: confirmError } =
@@ -66,9 +66,8 @@ const CheckOut = ({ price, course }) => {
     if (confirmError) {
       setCardError(confirmError);
     }
-    const currentData = new Date();
-    console.log(currentData);
-    console.log(paymentIntent);
+   
+    
     if (paymentIntent.status === "succeeded") {
       setProcessing(false);
       setTranId(paymentIntent.id);
@@ -83,15 +82,15 @@ const CheckOut = ({ price, course }) => {
       }
       
       axiosSecure.post("/payment", saveclass).then((res) => {
-        console.log(res.data);
+        
         if (res.data.insertedId) {
             axiosSecure.patch(`/classes/enrollment/${courseId}`,)
               .then((res) => {
-              console.log(res.data);
+              
               if(res.data.modifiedCount > 0){
                 axiosSecure.delete(`/carts/${id}`)
                 .then(res => {
-                  console.log(res.data);
+                  
                   if(res.data.deletedCount > 0) {
                     refetch();
                     Swal.fire("Payment", "Your Payment complete successfully.", "success");

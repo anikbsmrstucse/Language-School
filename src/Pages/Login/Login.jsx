@@ -40,7 +40,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        
         setError(error.message);
       });
   };

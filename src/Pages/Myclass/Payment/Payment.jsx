@@ -17,8 +17,8 @@ const Payment = () => {
       courseId,
       id
     }
-    console.log('id',id);
-    console.log('new price',newprice,);
+    
+    
   return (
     <div>
       <Helmet>

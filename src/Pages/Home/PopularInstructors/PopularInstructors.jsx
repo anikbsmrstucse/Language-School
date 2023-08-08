@@ -7,7 +7,7 @@ import InstructorsCard from './InstructorsCard';
 const PopularInstructors = () => {
     const [instructors,refetch] = useInstructor();
     const sixInstructors = instructors.slice(0,6);
-    console.log(sixInstructors);
+    
     return (
         <div>
            <SectionTitle title={'Our Popular Instructors'}></SectionTitle>

@@ -29,7 +29,7 @@ const AddClass = () => {
      })
      .then(res => res.json())
      .then(images => {
-        console.log(images);
+        
         if(images.success){
             const image = images.data.display_url;
             const {name,instructor,email,price,available_seats,status} = data;

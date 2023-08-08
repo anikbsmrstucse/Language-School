@@ -10,7 +10,7 @@ const AllUser = () => {
     const [axiosSecure] = useAxiosSecure();
   const [users, refetch] = useUser();
   const updateRole = (suser) => {
-    console.log(suser);
+    
     fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/users/admin/${suser._id}`, {
       method: "PATCH",
     })

@@ -49,10 +49,10 @@ const AuthProvider = ({ children }) => {
       if(loggedUser){
         axios.post('https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/jwt',{email: loggedUser.email})
         .then(data => {
-            console.log(data.data.token);
+            
             localStorage.setItem('access-token',data.data.token);
             setLoading(false);
-            console.log("on auth state", loggedUser);
+            
         })
       }
       else{
