@@ -32,7 +32,7 @@ const SingleClass = ({ course, refetch }) => {
       });
   };
   const handleDeny = (course) => {
-    fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/classes/deny/${course._id}`, {
+    fetch(`https://language-school-assignment-12-server.vercel.app/classes/deny/${course._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

@@ -19,7 +19,7 @@ const SocialSignIn = () => {
           email: loggedUser.email,
           role: "student",
         };
-        fetch("https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/users", {
+        fetch("https://language-school-assignment-12-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

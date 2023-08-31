@@ -11,7 +11,7 @@ const AllUser = () => {
   const [users, refetch] = useUser();
   const updateRole = (suser) => {
     
-    fetch(`https://language-school-assignment-12-server-anikbsmrstucse.vercel.app/users/admin/${suser._id}`, {
+    fetch(`https://language-school-assignment-12-server.vercel.app/users/admin/${suser._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
